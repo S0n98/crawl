@@ -17,9 +17,8 @@ class RequestThread(threading.Thread):
       res = requests.get(self.url, timeout=5, headers=headers)
 
       tree = html.fromstring(res.content)
-      print(tree)
-      #needed_data = tree.xpath('/html/body/div/div[2]/table/tbody/tr[20]/td[2]/ul')
-      needed_data = tree.xpath('/html/text()')
+      #needed_data = tree.xpath('//*[@id="MD"]/table/tbody/tr[20]/td[2]/ul')
+      needed_data = tree.xpath('//*[@id="MD"]/table/tbody')
       print(needed_data)
       self.result = {self.url.split(':')[-1]:needed_data}
     except(requests.exceptions.Timeout):
