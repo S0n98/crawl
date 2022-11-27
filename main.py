@@ -6,10 +6,6 @@ def main():
   urls = read_url_from_file('drug.txt')
 
   threads = [RequestThread(url) for url in urls]
-  threads[0].start()
-  threads[0].join()
-  print(threads[0].result)
-  return
   for thread in threads:
     thread.start()
   for thread in threads:
@@ -18,4 +14,3 @@ def main():
     print(thread.result)
   
 main()
-
